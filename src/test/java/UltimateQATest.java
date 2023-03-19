@@ -1,0 +1,44 @@
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+//modyfikatory dostępu w Java
+//różnica pomiędzy klasą, interfejsem, a klasą abstrakcyjną
+public class UltimateQATest extends PageSetup{
+
+
+    //słowo kluczowe void - zwracanie z funkcji
+    //słowo static
+    @Test
+    public void testOne() {
+        //biblioteka WebdriverManager - io.github.bonigarcia
+        // System.out.println(projectLocation);
+        WebElement button = driver.findElement(By.id("idExample"));
+        button.click();
+
+        WebElement buttonSuccess = driver.findElement(By.className("entry-title"));
+        //import static
+        assertEquals("Button success", buttonSuccess.getText());
+    }
+@Test
+    public void testTwo(){
+        WebElement nameInput = driver.findElement(By.id("et_pb_contact_name_0"));
+        nameInput.sendKeys("Justyna");
+     WebElement emailInput = driver.findElement(By.id("et_pb_contact_email_0"));
+    emailInput.sendKeys("tester@tester.pl");
+    Thread.sleep(2000);
+    WebElement thanksText = driver.findElement(By.xpath("//div[@class='et-pb-contact-message']/p"));
+
+    WebElement buttonEmailMe = driver.findElement(By.name("et_builder_submit_button"));
+    assertEquals("Thanks for contacting", thanksText.getText());
+
+
+}
+}
