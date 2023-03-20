@@ -30,7 +30,7 @@ public class UltimateQATest extends PageSetup{
   @Test
     public void testTwo() throws InterruptedException {
         WebElement nameInput = driver.findElement(By.id("et_pb_contact_name_0"));
-        nameInput.sendKeys("Tomasz");
+        nameInput.sendKeys("Justyna");
 
         WebElement emailInput = driver.findElement(By.id("et_pb_contact_email_0"));
         emailInput.sendKeys("tester@tester.pl");
