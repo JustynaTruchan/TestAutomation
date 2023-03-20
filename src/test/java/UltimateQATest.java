@@ -27,18 +27,25 @@ public class UltimateQATest extends PageSetup{
         //import static
         assertEquals("Button success", buttonSuccess.getText());
     }
-@Test
-    public void testTwo(){
+  @Test
+    public void testTwo() throws InterruptedException {
         WebElement nameInput = driver.findElement(By.id("et_pb_contact_name_0"));
-        nameInput.sendKeys("Justyna");
-     WebElement emailInput = driver.findElement(By.id("et_pb_contact_email_0"));
-    emailInput.sendKeys("tester@tester.pl");
-    Thread.sleep(2000);
-    WebElement thanksText = driver.findElement(By.xpath("//div[@class='et-pb-contact-message']/p"));
+        nameInput.sendKeys("Tomasz");
 
-    WebElement buttonEmailMe = driver.findElement(By.name("et_builder_submit_button"));
-    assertEquals("Thanks for contacting", thanksText.getText());
+        WebElement emailInput = driver.findElement(By.id("et_pb_contact_email_0"));
+        emailInput.sendKeys("tester@tester.pl");
 
+        // waity w Selenium: explicit wait, implicit wait, fluent wait
+        Thread.sleep(2000);
 
+        WebElement buttonEmailMe = driver.findElement(By.name("et_builder_submit_button"));
+        buttonEmailMe.click();
+
+        Thread.sleep(2000);
+
+        WebElement thanksText = driver.findElement(By.xpath("//div[@class='et-pb-contact-message']/p"));
+        assertEquals("Thanks for contacting us", thanksText.getText());
+    }
+    
 }
-}
+
